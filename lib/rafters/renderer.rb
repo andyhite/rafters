@@ -41,6 +41,7 @@ class Rafters::Renderer
   end
 
   def store(component)
+    controller.components_for_action[component.identifier] = { klass: component.class, options: component.local_options.merge(settings: component.local_settings) }
     (controller.rendered_components ||= []) << component
   end
 end
