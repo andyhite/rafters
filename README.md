@@ -72,6 +72,7 @@ const InlineApp = () => {
 
   return (
     <Rafters.Renderer
+      scope={{ setFormData }}
       schema={(Builder) =>
         Builder.AppLayout({
           children: [
@@ -79,7 +80,7 @@ const InlineApp = () => {
               heading: Builder.Heading({ children: 'My Form' }),
               children: [
                 Builder.Form({
-                  onSubmit: (data) => setFormData(data),
+                  onSubmit: Builder.Callback((data) => setFormData(data)),
                   children: [
                     Builder.TextField({ label: 'Name', name: 'name' }),
                     Builder.SelectField({
@@ -203,7 +204,7 @@ const schema = createSchema((Builder) =>
         heading: Builder.Heading({ children: 'My Form' }),
         children: [
           Builder.Form({
-            onSubmit: (data) => setFormData(data),
+            onSubmit: Builder.Callback((data) => setFormData(data)),
             children: [
               Builder.TextField({ label: 'Name', name: 'name' }),
               Builder.SelectField({
