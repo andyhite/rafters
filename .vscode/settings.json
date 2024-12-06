@@ -1,0 +1,25 @@
+{
+	"editor.formatOnSave": false,
+  "editor.tabSize": 2,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit"
+	},
+	"xo.enable": true,
+	"xo.format.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+	"[javascript]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "samverschueren.linter-xo"
+	},
+	"exportall.config.relExclusion": [
+		"/src/rafters.stories.tsx"
+	]
+}
