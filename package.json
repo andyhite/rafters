@@ -64,7 +64,7 @@
     "eslint-config-xo": "^0.46.0",
     "eslint-config-xo-react": "^0.27.0",
     "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "jsdom": "^25.0.1",
     "prettier": "^3.4.2",
     "react-hook-form": "^7.53.2",
