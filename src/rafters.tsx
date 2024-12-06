@@ -11,7 +11,7 @@ export type RendererProps<TRegistry extends Registry> = {
   scope?: Record<string, any>;
 };
 
-export type CreateRaftersReturn<TRegistry extends Registry> = {
+export type CreateRaftersReturn<TRegistry extends Registry = Registry> = {
   Renderer: ComponentType<RendererProps<TRegistry>>;
   Builder: (
     builderFn: BuilderFn<string, TRegistry>
