@@ -41,6 +41,6 @@ describe("App", () => {
   it("renders the App component", () => {
     render(<Rafters.Renderer schema={(Builder) => Builder.Fieldset()} />);
 
-    screen.debug(); // Prints out the jsx in the App component unto the command line
+    screen.debug();
   });
 });

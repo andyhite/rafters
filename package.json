@@ -17,9 +17,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/rafters.js",
-      "require": "./dist/rafters.umd.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/rafters.umd.cjs"
     }
   },
   "scripts": {
@@ -28,7 +28,7 @@
     "lint": "xo",
     "lint:fix": "lint --fix",
     "test": "vitest",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "NODE_NO_WARNINGS=1 storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
@@ -43,7 +43,6 @@
     "@emotion/styled": "^11.13.5",
     "@fontsource/material-icons": "^5.1.0",
     "@fontsource/roboto": "^5.1.0",
-    "@mui/icons-material": "^6.1.10",
     "@mui/material": "^6.1.10",
     "@storybook/addon-actions": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
