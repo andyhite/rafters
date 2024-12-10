@@ -6,8 +6,8 @@ import { useForm, type UseFormReturn } from "react-hook-form";
 import { Box, Typography, Button } from "@mui/material";
 import { userEvent, within, expect, waitFor } from "@storybook/test";
 import { FormContainer, TextFieldElement } from "react-hook-form-mui";
-import { useEffect } from "react";
 import { createRafters } from "../rafters";
+import type { Builder } from "../builder";
 
 type AppLayoutProps = {
   readonly children: React.ReactNode;

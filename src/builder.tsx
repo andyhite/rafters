@@ -1,3 +1,4 @@
+import type { ComponentType, CustomComponentPropsWithRef } from "react";
 import type { Registry } from "./registry";
 import type { Callback, Schema, SchemaProps } from "./schema";
 
@@ -10,6 +11,12 @@ export type BuilderFn<
   | Schema<TComponentType, TRegistry>
   | Array<Schema<TComponentType, TRegistry>>;
 
+export type MatchCallback<TProps> = {
+  [K in keyof TProps]: TProps[K] extends (...args: any[]) => any
+    ? TProps[K]
+    : never;
+}[keyof TProps];
+
 export type Builder<TRegistry extends Registry = Registry> = {
   [TComponentType in keyof TRegistry]: TComponentType extends string
     ? (
@@ -17,7 +24,12 @@ export type Builder<TRegistry extends Registry = Registry> = {
       ) => Schema<TComponentType, TRegistry>
     : never;
 } & {
-  Callback: <TCallback extends (...args: any[]) => any>(
+  Callback: <
+    TComponent extends keyof TRegistry,
+    TProps extends CustomComponentPropsWithRef<TRegistry[TComponent]>,
+    TKey extends keyof TProps,
+    TCallback extends TProps[TKey] & ((...args: any[]) => any),
+  >(
     callback: TCallback
   ) => Callback;
 };
