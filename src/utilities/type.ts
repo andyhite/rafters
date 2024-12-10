@@ -16,3 +16,11 @@ export type ReplaceUnionMember<TUnion, TSearch, TReplacement> =
       : TUnion extends TSearch
         ? Exclude<TUnion, TSearch> | TReplacement
         : TUnion;
+
+export type ReplaceValues<TObject, TSearchValue, TReplaceValue> = {
+  [TKey in keyof TObject]: TObject[TKey] extends TSearchValue
+    ? TReplaceValue
+    : TObject[TKey] extends TSearchValue[]
+      ? TReplaceValue[]
+      : TObject[TKey];
+};

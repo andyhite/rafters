@@ -14,6 +14,7 @@
         "prefix": ["T"]
       }
     ],
+    "react/no-array-index-key": "off",
     "new-cap": ["error", { "properties": false }],
     "import/extensions": "off",
     "n/file-extension-in-import": "off",

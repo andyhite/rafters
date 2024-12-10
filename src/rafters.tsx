@@ -1,17 +1,17 @@
 import { type ComponentType } from "react";
-import { createBuilder, type Builder, type BuilderFn } from "./builder";
+import { createBuilder, type BuilderFn } from "./builder";
 import { type Registry } from "./registry";
-import { renderSchema, type Schema } from "./schema";
+import { renderSchema, SchemaRenderer, type Schema } from "./schema";
 
 export type RendererProps<TRegistry extends Registry> = {
-  schema:
+  readonly schema:
     | BuilderFn<string, TRegistry>
     | Schema<string, TRegistry>
     | Array<Schema<string, TRegistry>>;
-  scope?: Record<string, any>;
+  readonly scope?: Record<string, any>;
 };
 
-export type CreateRaftersReturn<TRegistry extends Registry = Registry> = {
+export type Rafters<TRegistry extends Registry = Registry> = {
   Renderer: ComponentType<RendererProps<TRegistry>>;
   Builder: (
     builderFn: BuilderFn<string, TRegistry>
@@ -20,19 +20,20 @@ export type CreateRaftersReturn<TRegistry extends Registry = Registry> = {
 
 export const createRafters = <TRegistry extends Registry = Registry>(
   components: TRegistry
-): CreateRaftersReturn<TRegistry> => {
+): Rafters<TRegistry> => {
   const builder = createBuilder<TRegistry>();
 
-  return {
-    Renderer({ schema, scope }) {
-      if (typeof schema === "function") {
-        schema = schema(builder);
-      }
+  function Renderer({ schema, scope }: RendererProps<TRegistry>) {
+    if (typeof schema === "function") {
+      schema = schema(builder);
+    }
 
-      return renderSchema(schema, components, scope);
-    },
-    Builder(callbackFn) {
-      return callbackFn(builder);
-    },
-  };
+    return renderSchema(schema, components, scope);
+  }
+
+  function Builder(callbackFn: BuilderFn<string, TRegistry>) {
+    return callbackFn(builder);
+  }
+
+  return { Renderer, Builder };
 };

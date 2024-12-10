@@ -1,6 +1,5 @@
 import type { Registry } from "./registry";
-import type { Callback } from "./callback";
-import type { Schema, SchemaProps } from "./schema";
+import type { Callback, Schema, SchemaProps } from "./schema";
 
 export type BuilderFn<
   TComponentType extends string = string,
@@ -35,13 +34,15 @@ export function createBuilder<
             return {
               type: "Callback",
               code: code.toString(),
+              isPromise: code instanceof Promise,
             };
           };
         }
 
-        return (props: Record<string, any>) => {
+        return ({ key, ...props }: SchemaProps) => {
           return {
             type: componentType,
+            key,
             props,
           };
         };

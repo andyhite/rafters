@@ -41,7 +41,8 @@
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
-    "react": "^19.0.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
@@ -51,10 +52,10 @@
     "@mui/material": "^6.1.10",
     "@storybook/addon-actions": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/addon-interactions": "^8.4.7",
-    "@storybook/addon-onboarding": "^8.4.7",
     "@storybook/addon-themes": "^8.4.7",
     "@storybook/blocks": "^8.4.7",
+    "@storybook/experimental-addon-test": "^8.4.7",
+    "@storybook/preview-api": "^8.4.7",
     "@storybook/react": "^8.4.7",
     "@storybook/react-vite": "^8.4.7",
     "@storybook/test": "^8.4.7",
@@ -65,11 +66,14 @@
     "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/browser": "^3.0.0-beta.1",
+    "@vitest/mocker": "3.0.0-beta.1",
     "eslint-config-xo": "^0.46.0",
     "eslint-config-xo-react": "^0.27.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.1.0",
     "jsdom": "^25.0.1",
+    "playwright": "^1.49.0",
     "prettier": "^3.4.2",
     "react-hook-form": "^7.53.2",
     "react-hook-form-mui": "^7.4.1",
