@@ -1,0 +1,60 @@
+name: Publish Storybook
+
+on:
+  push:
+  workflow_dispatch:
+
+run-name: Publish Storybook to Chromatic
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  changed-files:
+    runs-on: ubuntu-latest
+    name: changed-files
+    outputs:
+      any-changed: ${{ steps.changed-files.outputs.any_changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            src/**
+            .storybook/**
+
+  storybook:
+    name: Publish Storybook
+    runs-on: ubuntu-latest
+    needs:
+      - changed-files
+    if: ${{ needs.changed-files.outputs.any-changed == 'true' }}
+    environment:
+      name: chromatic
+      url: ${{ steps.chromatic.outputs.buildUrl }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: latest
+      - run: pnpm install
+      - id: chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: main
+          skip: dependabot/**
+          token: ${{ secrets.GITHUB_TOKEN }}
