@@ -13,6 +13,8 @@ on:
           - minor
           - major
 
+run-name: Bump ${{ inputs.version }} version
+
 jobs:
   version:
     name: Version
@@ -47,8 +49,8 @@ jobs:
 
           VERSION=$(pnpm version ${{ inputs.version }} --no-git-tag-version)
 
-          git commit --all --message "🔖 $VERSION"
-          git tag --annotate --message "🔖 $VERSION" --sign $VERSION
+          git commit --all --message "$VERSION"
+          git tag --annotate --message "$VERSION" --sign $VERSION
           git push
           git push --tags
 

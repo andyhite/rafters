@@ -7,6 +7,8 @@ on:
     branches: main
   workflow_dispatch:
 
+run-name: Run checks (lint, test, typecheck)
+
 jobs:
   check:
     name: Check
