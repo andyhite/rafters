@@ -1,5 +1,5 @@
 {
-  "name": "@andyhite/rafters",
+  "name": "rafters",
   "version": "0.0.0",
   "type": "module",
   "description": "",
@@ -24,17 +24,13 @@
   },
   "scripts": {
     "build": "vite build",
-    "build-storybook": "storybook build -o dist-storybook",
-    "ci": "CI=1 pnpm run \"/^ci:.*/\"",
-    "ci:build": "pnpm run build",
-    "ci:build-storybook": "pnpm run build-storybook",
-    "ci:lint": "pnpm run lint",
-    "ci:test": "pnpm run test --watch=false",
+    "build-storybook": "storybook build",
     "dev": "vite",
     "lint": "xo",
     "lint:fix": "lint --fix",
     "storybook": "NODE_NO_WARNINGS=1 storybook dev -p 6006",
-    "test": "vitest"
+    "test": "vitest",
+    "tool-versions": "sh -c './scripts/tool-versions.sh $1' --"
   },
   "dependencies": {
     "@nyariv/sandboxjs": "^0.8.23",

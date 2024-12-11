@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   changed-files:
-    name: Detect changed filed
+    name: Detect changed files
     runs-on: ubuntu-latest
     outputs:
       any-changed: ${{ steps.changed-files.outputs.any_changed }}
@@ -49,13 +49,17 @@ jobs:
       url: ${{ steps.chromatic.outputs.buildUrl }}
     steps:
       - uses: actions/checkout@v4
+      - id: tool-versions
+        run: |
+          echo "node-version=$(./scripts/tool-versions.sh nodejs)" >> $GITHUB_OUTPUT
+          echo "pnpm-version=$(./scripts/tool-versions.sh pnpm)" >> $GITHUB_OUTPUT
       - uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: ${{ steps.tool-versions.outputs.pnpm-version }}
       - uses: actions/setup-node@v4
         with:
+          node-version: ${{ steps.tool-versions.outputs.node-version }}
           cache: pnpm
-          node-version: latest
       - run: pnpm install
       - id: chromatic
         uses: chromaui/action@latest
