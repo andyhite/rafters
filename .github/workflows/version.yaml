@@ -32,8 +32,7 @@ jobs:
         with:
           cache: pnpm
           node-version: latest
-      - name: Configure Git, update version, release and push
-        run: |
+      - run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
 
