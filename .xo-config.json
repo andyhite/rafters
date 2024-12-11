@@ -1,0 +1,35 @@
+{
+  "space": true,
+  "prettier": true,
+  "extends": "xo-react",
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-redeclare": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "typeParameter",
+        "format": ["PascalCase"],
+        "prefix": ["T"]
+      }
+    ],
+    "react/no-array-index-key": "off",
+    "new-cap": ["error", { "properties": false }],
+    "import/extensions": "off",
+    "n/file-extension-in-import": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "allowList": {
+          "Args": true,
+          "Fn": true,
+          "Props": true,
+          "args": true,
+          "fn": true,
+          "props": true
+        }
+      }
+    ]
+  }
+}
