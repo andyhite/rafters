@@ -2,7 +2,30 @@
   "space": true,
   "prettier": true,
   "extends": "xo-react",
+  "envs": ["es2021"],
   "rules": {
+    "import/no-unassigned-import": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always",
+        "warnOnUnassignedImports": false,
+        "alphabetize": {
+          "order": "asc",
+          "orderImportKind": "asc",
+          "caseInsensitive": true
+        },
+        "named": true
+      }
+    ],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-redeclare": "off",

@@ -1,1 +1,1 @@
-export { createRafters } from "./core/create-rafters";
+export { createRafters } from "@/core/create-rafters";

@@ -1,11 +1,12 @@
 import Sandbox from "@nyariv/sandboxjs";
 import { isObject, isString } from "lodash-es";
 import { type ComponentType } from "react";
+
 import {
   type CallbackSchema,
   type ComponentSchema,
-} from "../components/renderer";
-import { type Registry } from "../types/registry";
+} from "@/components/renderer";
+import { type Registry } from "@/types/registry";
 
 export function isCallbackSchema(value: any): value is CallbackSchema<any> {
   return isObject(value) && "type" in value && value.type === "Callback";

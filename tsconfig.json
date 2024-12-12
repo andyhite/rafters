@@ -18,8 +18,20 @@
     "strict": true,
     "target": "es2022",
     "verbatimModuleSyntax": true,
-    "types": ["vite/client", "vitest/globals"]
+    "types": ["vite/client", "vitest/globals"],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
   },
-  "include": ["src/**.ts", "src/**.tsx"],
-  "exclude": ["src/**/*.stories.tsx", "src/**/*.test.tsx"]
+  "include": [
+    "*.ts",
+    ".storybook/**.ts",
+    ".storybook/**.tsx",
+    "src/**.ts",
+    "src/**.tsx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx"
+  ],
 }

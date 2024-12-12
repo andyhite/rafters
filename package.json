@@ -26,8 +26,7 @@
     "build": "vite build",
     "build-storybook": "storybook build",
     "dev": "vite",
-    "lint": "xo",
-    "lint:fix": "lint --fix",
+    "lint": "pnpm xo .storybook/** src/**",
     "storybook": "NODE_NO_WARNINGS=1 storybook dev -p 6006",
     "test": "vitest",
     "tool-versions": "sh -c './scripts/tool-versions.sh $1' --"

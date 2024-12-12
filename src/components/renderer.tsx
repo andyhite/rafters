@@ -1,14 +1,15 @@
 import React, {
-  type ReactNode,
-  type ReactElement,
   type CustomComponentPropsWithRef,
+  type ReactElement,
+  type ReactNode,
   useMemo,
 } from "react";
 import type { Simplify } from "type-fest";
-import { type Builder, type BuilderFn } from "../core/create-builder";
-import { createPropsProxy } from "../core/create-props-proxy";
-import { type IsExactUnion, type ReplaceUnionMember } from "../types/utility";
-import { type Registry } from "../types/registry";
+
+import { type Builder, type BuilderFn } from "@/core/create-builder";
+import { createPropsProxy } from "@/core/create-props-proxy";
+import { type Registry } from "@/types/registry";
+import { type IsExactUnion, type ReplaceUnionMember } from "@/types/utility";
 
 export type ReplaceReactNodeProps<TProps, TRegistry extends Registry> = {
   [TKey in keyof TProps]: IsExactUnion<TProps[TKey], ReactNode> extends true
