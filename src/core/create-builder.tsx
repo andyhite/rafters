@@ -1,9 +1,9 @@
+import { type Registry } from "@/types/registry";
 import {
   type CallbackSchema,
   type ComponentSchema,
   type ComponentSchemaProps,
-} from "@/components/renderer";
-import { type Registry } from "@/types/registry";
+} from "@/types/schema";
 
 export type BuilderFn<
   TComponentType extends string = string,

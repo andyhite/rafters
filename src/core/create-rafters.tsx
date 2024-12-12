@@ -2,12 +2,9 @@ import type { ComponentType } from "react";
 
 import { type BuilderFn, createBuilder } from "./create-builder";
 
-import {
-  type ComponentSchema,
-  Renderer,
-  type RendererProps,
-} from "@/components/renderer";
+import { Renderer, type RendererProps } from "@/components/renderer";
 import { type Registry } from "@/types/registry";
+import type { ComponentSchema } from "@/types/schema";
 
 export type Rafters<TRegistry extends Registry = Registry> = {
   Renderer: ComponentType<
