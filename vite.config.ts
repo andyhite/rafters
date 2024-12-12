@@ -1,19 +1,25 @@
 import { resolve } from "node:path";
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
-import dts from "vite-plugin-dts";
+
 import { storybookTest } from "@storybook/experimental-addon-test/vitest-plugin";
+import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { defineConfig } from "vitest/config";
+
+console.log(resolve(import.meta.dirname, "src/components/*"));
 
 export default defineConfig({
   plugins: [
-    tsconfigPaths(),
-    react(),
     dts({ rollupTypes: true }),
+    react(),
     storybookTest({
       storybookScript: "pnpm storybook --ci",
     }),
   ],
+  resolve: {
+    alias: {
+      "@": resolve(import.meta.dirname, "src"),
+    },
+  },
   build: {
     lib: {
       entry: resolve(import.meta.dirname, "src/index.ts"),
