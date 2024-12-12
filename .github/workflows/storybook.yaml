@@ -49,6 +49,8 @@ jobs:
       url: ${{ steps.chromatic.outputs.buildUrl }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - id: tool-versions
         run: |
           echo "node-version=$(./scripts/tool-versions.sh nodejs)" >> $GITHUB_OUTPUT
