@@ -26,6 +26,7 @@
         "named": true
       }
     ],
+    "capitalized-comments": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-redeclare": "off",
@@ -49,6 +50,7 @@
           "Fn": true,
           "Props": true,
           "args": true,
+          "env": true,
           "fn": true,
           "props": true
         }

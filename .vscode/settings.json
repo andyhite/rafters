@@ -18,8 +18,5 @@
 	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "samverschueren.linter-xo"
-	},
-	"exportall.config.relExclusion": [
-		"/src/rafters.stories.tsx"
-	]
+	}
 }

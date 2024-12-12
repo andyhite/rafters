@@ -1,4 +1,6 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import { withoutVitePlugins } from "@storybook/builder-vite";
+import { type StorybookConfig } from "@storybook/react-vite";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -10,6 +12,16 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {},
+  },
+  async viteFinal(config) {
+    config.plugins = await withoutVitePlugins(config.plugins, ["vite:dts"]);
+
+    return mergeConfig(config, {
+      mode: "storybook",
+      build: {
+        chunkSizeWarningLimit: 1600
+      }
+    });
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',
