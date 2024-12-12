@@ -19,7 +19,12 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       mode: "storybook",
       build: {
-        chunkSizeWarningLimit: 1600
+        chunkSizeWarningLimit: 1600,
+        minify: false,
+        terserOptions: {
+          compress: false,
+          mangle: false
+        }
       }
     });
   },
