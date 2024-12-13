@@ -40,7 +40,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: rafters.tgz
-          path: rafters.ts-*.tgz
+          path: rafters-*.tgz
 
   publish:
     name: Publish to ${{ matrix.name }}
@@ -90,8 +90,8 @@ jobs:
             eval `ssh-agent -s`
             ssh-add - <<< '${{ secrets.DEPLOY_KEY_PRIVATE }}'
             echo '${{ vars.DEPLOY_KEY_PUBLIC }}' > '${{ runner.temp }}/DEPLOY_KEY_PUBLIC.pub'
-            ssh-keygen -Y sign -f '${{ runner.temp }}/DEPLOY_KEY_PUBLIC.pub' -n file rafters.ts-*.tgz
-            ssh-keygen -Y verify -f ./.github/authorized_keys -I '41898282+github-actions[bot]@users.noreply.github.com' -n file -s rafters.ts-*.tgz.sig < rafters.ts-*.tgz
-        - run: gh release upload ${{ github.ref_name }} rafters.ts-*.tgz rafters.ts-*.tgz.sig
+            ssh-keygen -Y sign -f '${{ runner.temp }}/DEPLOY_KEY_PUBLIC.pub' -n file rafters-*.tgz
+            ssh-keygen -Y verify -f ./.github/authorized_keys -I '41898282+github-actions[bot]@users.noreply.github.com' -n file -s rafters-*.tgz.sig < rafters-*.tgz
+        - run: gh release upload ${{ github.ref_name }} rafters-*.tgz rafters-*.tgz.sig
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
