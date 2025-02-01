@@ -84,7 +84,7 @@ jobs:
         - build
         - publish
       steps:
-        - uses: actions/download-artifact@v2
+        - uses: actions/download-artifact@v4
           with:
             name: rafters.tgz
         - run: |
