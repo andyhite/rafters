@@ -1,0 +1,63 @@
+{
+  "name": "@andyhite/rafters",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A serializable React runtime: describe component trees and applications as JSON.",
+  "author": "Andrew Hite <andy@andyhite.com> (https://andyhite.com)",
+  "license": "MIT",
+  "files": ["dist"],
+  "main": "dist/rafters.cjs",
+  "module": "dist/rafters.js",
+  "types": "dist/rafters.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/rafters.d.ts",
+      "import": "./dist/rafters.js",
+      "require": "./dist/rafters.cjs"
+    },
+    "./zod-adapter": {
+      "types": "./dist/zod-adapter.d.ts",
+      "import": "./dist/zod-adapter.js"
+    }
+  },
+  "publishConfig": { "access": "public" },
+  "scripts": {
+    "build": "NODE_NO_WARNINGS=1 vite build",
+    "dev": "NODE_NO_WARNINGS=1 vite",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "NODE_NO_WARNINGS=1 xo src/**"
+  },
+  "dependencies": {
+    "@standard-schema/spec": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": { "optional": true }
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint-config-xo": "^0.46.0",
+    "eslint-config-xo-react": "^0.27.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "type-fest": "^4.30.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vite-plugin-dts": "^4.3.0",
+    "vitest": "^2.1.8",
+    "xo": "^0.59.3",
+    "zod": "^4.0.0"
+  }
+}

@@ -1,9 +1,11 @@
+import { resolve } from "node:path";
+
 import { withoutVitePlugins } from "@storybook/builder-vite";
 import { type StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../packages/rafters/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
@@ -18,6 +20,11 @@ const config: StorybookConfig = {
 
     return mergeConfig(config, {
       mode: "storybook",
+      resolve: {
+        alias: {
+          "@": resolve(process.cwd(), "packages/rafters/src"),
+        },
+      },
       build: {
         chunkSizeWarningLimit: 1600,
         minify: false,

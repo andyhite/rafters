@@ -38,11 +38,9 @@ jobs:
             .storybook/**
             .xo-config.json
             package.json
+            packages/**
             pnpm-lock.yaml
-            src/**
-            test.setup.ts
-            tsconfig.json
-            vite.config.ts
+            pnpm-workspace.yaml
 
   check:
     name: Check (${{ matrix.name }})
@@ -61,6 +59,8 @@ jobs:
             run: pnpm run build
           - name: build-storybook
             run: pnpm run build-storybook
+          - name: test-storybook
+            run: pnpm run build-storybook && pnpm run test-storybook:ci
     steps:
       - uses: actions/checkout@v4
       - id: tool-versions
@@ -74,6 +74,7 @@ jobs:
         with:
           node-version: ${{ steps.tool-versions.outputs.node-version }}
           cache: pnpm
-      - run: pnpm install --frozen-lockfile --strict-peer-dependencies
-      - run: pnpm dlx playwright install --with-deps
+      - run: pnpm install --frozen-lockfile
+      - if: matrix.name == 'test-storybook'
+        run: pnpm exec playwright install chromium --with-deps
       - run: ${{ matrix.run}}

@@ -20,7 +20,7 @@ export const decorators: Decorator[] = [
 ];
 
 export const parameters: Parameters = {
-  tontrols: {
+  controls: {
     expanded: true,
     matchers: {
       color: /(background|color)$/i,
